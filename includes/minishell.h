@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:22:34 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/02 18:10:16 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:36:06 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,32 @@
 #define MINISHELL_H
 
 #include "execution.h"
-#include "parcing.h"
+#include "parsing.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <sys/wait.h>
+
+
+
+/* flags pour indiquer le genre du mots
+- 1 if command
+- 2 if option
+- 3 if pipe
+- 4 if redirection
+- 5 if a simple word
+*/
+#define COMM 1
+#define OPTI 2
+#define PIPE 3
+#define REDI 4
+#define WORD 5
+
+
+
+
 
 
 

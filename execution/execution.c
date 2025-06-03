@@ -3,11 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaissam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:15:55 by slaissam          #+#    #+#             */
-/*   Updated: 2025/06/02 18:15:57 by slaissam         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:04:55 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "../includes/minishell.h"
 
