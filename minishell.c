@@ -6,18 +6,49 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/03 14:30:46 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/09 05:45:29 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "includes/minishell.h"
+#include <fcntl.h>
 
-int main()
+void ft_fd_print(int fd, char *str)
 {
-    while(1)
+    int i;
+
+    i = 0;
+    while(str[i])
     {
-        printf("%s",getenv("USER"));
-        
+        write(fd, &str[i],1);
+        i++;
+    }
+}
+
+int main(int argc, char *argv[], char *envp[]) {
+    int i = 0;
+    int fd = open("file_utils/env.txt" , O_CREAT | O_WRONLY ,0400);
+    while (envp[i] != NULL) {
+        ft_fd_print(fd, envp[i]);
+        ft_fd_print(fd, "\n");
+        i++;
+    }
+    close(fd);
+    return 0;
+}
+
+
+
+char *get_line(int a,int fd)
+{
+    int i = 1;
+    int j = 0;
+
+    
+    
+    while(i<a)
+    {
+        read
     }
 }
