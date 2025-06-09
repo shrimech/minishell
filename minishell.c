@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/09 05:45:29 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/09 05:50:52 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ char *get_line(int a,int fd)
     while(i<a)
     {
         read
+        
     }
 }
