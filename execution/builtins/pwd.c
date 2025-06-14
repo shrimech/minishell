@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/execution.h"
+#include "../../includes/minishell.h"
 
 int pwd_cmd(t_tools tool)
 {

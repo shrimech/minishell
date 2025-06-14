@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2025/06/14 23:46:53 by shrimech          #+#    #+#             */
+/*   Updated: 2025/06/15 00:38:42 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/minishell.h"
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+char	**ft_split_env(char *env)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	int		i;
+	char	**str;
+	int		len;
+
+	str = NULL;
+	i = -1;
+	len = ft_strlen(env);
+	while (env[++i] && env[i] != '=')
+		;
+	str = malloc(sizeof(char *) * 3);
+	str[0] = ft_substr(&env[0], 0, i);
+	if (!env[i])
+		str[1] = ft_strdup("");
+	else
+		str[1] = ft_substr(&env[i], 1, len);
+	str[2] = 0;
+	return (str);
 }

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2024/11/02 20:04:00 by shrimech          #+#    #+#             */
+/*   Updated: 2024/11/02 21:37:01 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <unistd.h>
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+void	ft_putchar_fd(char c, int fd)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	write(fd, &c, 1);
 }

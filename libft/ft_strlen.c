@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2024/10/23 22:21:42 by shrimech          #+#    #+#             */
+/*   Updated: 2024/10/30 23:21:14 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+size_t	ft_strlen(const char *s)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2024/10/23 22:26:27 by shrimech          #+#    #+#             */
+/*   Updated: 2024/10/30 23:30:25 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	size_t	i;
+
+	i = 0;
+	if (size != 0)
+	{
+		while (src[i] && i < (size - 1))
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (ft_strlen(src));
 }

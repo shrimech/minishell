@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2024/10/26 16:51:09 by shrimech          #+#    #+#             */
+/*   Updated: 2024/11/01 17:19:28 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[i] && s2[i])
+		&& (i < n - 1) && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

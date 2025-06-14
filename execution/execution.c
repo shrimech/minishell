@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "../includes/minishell.h"
 int is_builtin(char *cmd)
 {
     char *built[]  = {"cd", "pwd", "echo", "export", "unset", "env", "exit", NULL};
@@ -20,11 +20,11 @@ int is_builtin(char *cmd)
     while (built[i])
     {
         if (strcmp(built[i],cmd) == 0)
-            return 0;
+            return 1;
         else
             i++;
     }
-    return 1;
+    return 0;
 }
 
 int execute_builtin(t_tools *tool) {

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:39:15 by shrimech         ###   ########.fr       */
+/*   Created: 2024/10/27 16:12:04 by shrimech          #+#    #+#             */
+/*   Updated: 2024/11/04 01:23:54 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "includes/minishell.h"
-#include "includes/parsing.h"
-
-#include <fcntl.h>
-
-int main(int ac,char **av, char**env)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    t_env *envp;
-    
-    envp = convert_env(env);
+	char		*dp;
+	const char	*sp;
+
+	dp = (char *)dst;
+	sp = (const char *)src;
+	if (!dp && !sp && n == 0)
+		return (dst);
+	while (n--)
+	{
+		*dp++ = *sp++;
+	}
+	return (dst);
 }
