@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_cpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 23:45:22 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:38:37 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/15 05:40:11 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-#include "../../includes/parsing.h"
-
-
-
 
 int	ft_cmp(const char *s1, char *s2)
 {
@@ -58,10 +54,6 @@ t_env	*convert_env(char **env)
 		str = ft_split_env(env[i]);
 		old_pwd_check(str);
 		tmp = ft_lstnew_env(str[0], str[1]);
-		if (ft_cmp(tmp->var, "_"))
-			tmp->dx = 0;
-		else
-			tmp->dx = 2;
 		ft_lstadd_back_env(&envp, tmp);
 		free(str);
 		i++;

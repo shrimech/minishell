@@ -12,20 +12,18 @@
 
 #include "../../includes/minishell.h"
 
-int env_cmd(t_tools *tool)
+int env_cmd(t_env *tool)
 {
-    int i;
     
-    if (tool->args[1] != NULL)
+    // if (tool-> != NULL)
+    // {
+    //     printf("env: too many arguments\n");
+    //     return (1);
+    // }
+    while (tool != NULL)
     {
-        printf("env: too many arguments\n");
-        return (1);
-    }
-    i = 0;
-    while (tool->envp[i] != NULL)
-    {
-        printf("%s\n", tool->envp[i]);
-        i++;
+        printf("%s=%s\n", tool->var,tool->value);
+        tool =  tool->next;
     }
     return (0);
 }

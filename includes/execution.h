@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaissam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:21:16 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/09 04:44:28 by slaissam         ###   ########.fr       */
+/*   Updated: 2025/06/15 05:33:24 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_tools
     char *oldpwd;
 } t_tools;
 
-int env_cmd(t_tools *tool);
+int env_cmd(t_env *tool);
 int echo_cmd(t_tools *tool);
 int pwd_cmd(t_tools tool);
 char	**ft_split(char *s, char c);

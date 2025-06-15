@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:22:34 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 00:34:39 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/15 05:44:53 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define MINISHELL_H
 
 #include "../libft/libft.h"
-#include "execution.h"
 #include "parsing.h"
+#include "execution.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
