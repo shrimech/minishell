@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 01:03:02 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/15 01:08:43 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ int main(int ac,char **av, char**env)
     
     envp = convert_env(env);
 }
-
