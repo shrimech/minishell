@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:21:16 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 05:33:24 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:57:58 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ typedef struct s_tools
 } t_tools;
 
 int env_cmd(t_env *tool);
-int echo_cmd(t_tools *tool);
-int pwd_cmd(t_tools tool);
+int echo_cmd(t_command *tool);
+int pwd_cmd(t_command *tool);
 char	**ft_split(char *s, char c);
+int exit_cmd(char *input);
 
 #endif

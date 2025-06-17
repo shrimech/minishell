@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 19:13:31 by slaissam          #+#    #+#             */
-/*   Updated: 2025/06/17 01:56:49 by shrimech         ###   ########.fr       */
+/*   Created: 2025/06/16 21:44:42 by shrimech          #+#    #+#             */
+/*   Updated: 2025/06/17 00:42:07 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "includes/minishell.h"
 
-int pwd_cmd(t_command *tool)
+void cntr_c(int sig) {
+    (void)sig;
+    rl_on_new_line();
+    rl_replace_line("", 0);
+    write(1, "\n", 1);
+    rl_redisplay();
+}
+
+void signal_handler(void)
 {
-    if (getcwd(tool->pwd, sizeof(tool->pwd)) != NULL)
-        printf("Current directory: %s\n", tool->pwd);
-    else {
-        perror("getcwd() error");
-        return 1;
-    }
-    return 0;
+    signal(SIGQUIT,SIG_IGN);
+    signal(SIGINT,cntr_c);
 }

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:22:34 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/15 05:44:53 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:04:05 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 #define PIPE 3
 #define REDI 4
 #define WORD 5
-
 
 
 

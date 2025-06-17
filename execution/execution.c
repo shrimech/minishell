@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaissam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:15:55 by slaissam          #+#    #+#             */
-/*   Updated: 2025/06/09 04:44:05 by slaissam         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:54:19 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int is_builtin(char *cmd)
     return 0;
 }
 
-int execute_builtin(t_tools *tool) {
+int execute_builtin(t_command *tool) {
     char *cmd ;
     
-    cmd = tools->args[0];
+    cmd = tool->word;
     
     if (strcmp(cmd, "echo") == 0)
         return echo_cmd(tool);

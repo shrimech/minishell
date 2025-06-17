@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   gestion_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 19:13:31 by slaissam          #+#    #+#             */
-/*   Updated: 2025/06/17 01:56:49 by shrimech         ###   ########.fr       */
+/*   Created: 2025/06/17 03:06:09 by shrimech          #+#    #+#             */
+/*   Updated: 2025/06/17 03:54:25 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int pwd_cmd(t_command *tool)
+t_command	*ft_lstnew_cmd(char *splited)
 {
-    if (getcwd(tool->pwd, sizeof(tool->pwd)) != NULL)
-        printf("Current directory: %s\n", tool->pwd);
-    else {
-        perror("getcwd() error");
-        return 1;
-    }
-    return 0;
+	t_command	*cmd;
+
+	cmd = malloc(sizeof(t_command));
+	if (!cmd)
+		return (NULL);
+	cmd->word = splited;
+	cmd->flag = -1;
+	cmd->next = NULL;
+	return (cmd);
 }
