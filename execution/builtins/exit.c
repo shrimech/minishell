@@ -33,15 +33,18 @@ int exit_cmd(char *input)
 {
     char **split;
 
-    if (input)
-        split = ft_split(input,' ');
-    if ((input == NULL || ft_strcmp(split[0],"exit") == 0) && split[1] == NULL)
+    if (!input)
+        exit((printf("exit\n"),0));;
+    if (!(*input))
+        return(0);
+    split = ft_split(input,' ');
+    if ( ft_strcmp(split[0],"exit") == 0 && split[1] == NULL)
         exit((printf("exit\n"),0));
     if (ft_strcmp(split[0],"exit") == 0 && is_n_number(split[1]))
-        exit((printf("exit\nminishell: exit: a: numeric argument required\n"),2));
+        return((ft_printf("exit\nminishell: exit: a: numeric argument required\n"),2));
     if (ft_strcmp(split[0],"exit") == 0 && !is_n_number(split[1]) && split[2] == NULL)
         exit((printf("exit\n"),ft_atoi(split[1])));
     if (ft_strcmp(split[0],"exit") == 0 && !is_n_number(split[1]) && split[2] != NULL)
-        exit((printf("exit\nminishell: exit: too many arguments\n"),1));
+        return((ft_printf("exit\nminishell: exit: too many arguments\n"),1));
     return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:19:08 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/17 02:39:28 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:20:13 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void program_loop(t_env **envp)
     {
         input = readline(prompt);
         exit_cmd(input);
-        parsing(input);
+        // parsing(input);
         printf("%s\n",input);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:22:34 by shrimech          #+#    #+#             */
-/*   Updated: 2025/06/16 22:04:05 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/18 04:13:52 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MINISHELL_H
 
 #include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
 #include "parsing.h"
 #include "execution.h"
 #include <stdio.h>

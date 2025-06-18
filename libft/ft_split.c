@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:43:07 by shrimech          #+#    #+#             */
-/*   Updated: 2024/11/14 08:15:34 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/06/18 05:20:19 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,17 @@ char	**ft_split(char const *s, char c)
 	}
 	return (lst[i] = NULL, lst);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char a[] = "...........";
-	char b = '.';
-	int i;
-	char **c = ft_split(a, b);
-	i = 0;
-	while (c[i] != NULL) 
-	{
-        	printf("Word %u: %s\n", i + 1, c[i]); 
-		i++;
-	}
-	printf("%s \n", c[i]);
-}*/
+
+// #include <stdio.h>
+// #include <readline/readline.h>
+// #include <readline/history.h>
+// int main()
+// {
+// 	char *a = readline("salah>>> $");
+// 	char b = ' ';
+// 	char **c = ft_split(a, b);
+// 	if (a == NULL) 
+// 	{
+//         	printf("Word: %s\n", c); 
+// 	}
+// }
