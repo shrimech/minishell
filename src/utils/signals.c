@@ -19,7 +19,7 @@ void	clear_rl_line(void)
 	rl_on_new_line();
 }
 
-static void	handle_sigint(int code)
+void	handle_sigint(int code)
 {
 	(void)code;
 	printf("\n");

@@ -90,5 +90,10 @@ int	ft_cd(t_data *data, char **params)
 			perror(params[1]);
 		return (res);
 	}
+	else if (count_arg(params) == 1)
+	{
+		chdir(getenv("HOME"));
+		update_pwd(data, getenv("HOME"));
+	}
 	return (1);
 }

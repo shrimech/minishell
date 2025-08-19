@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:11:58 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:11:59 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/19 12:52:46 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,19 @@ int	here_doc(t_data *data, char *word)
 		unlink(".heredoc.tmp");
 	return (fd);
 }
+
+// int	loop_here_doc(t_data *data)
+// {
+// 	t_token *tmp;
+// 	int fd;
+// 	tmp = data->token;
+
+// 	fd = -1;
+// 	while (tmp->next != data->token)
+// 	{
+// 		if (tmp->type == HEREDOC)
+// 			fd = here_doc(data, tmp->next->str);
+// 		tmp = tmp->next;
+// 	}
+// 	return (dup(fd));
+// }

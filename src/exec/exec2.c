@@ -18,6 +18,13 @@ static bool	check_dir(char **path, char *cmd, t_data *data)
 	struct stat	path_stat;
 
 	stat(*path, &path_stat);
+	if (*cmd == '\0' || (*cmd == '.' && *(cmd + 1) == '.' && *(cmd + 2) != '/'))
+	{
+		print_error(cmd);
+		print_error(" : command not found\n");
+		data->exit_code = 127;
+		return (false);
+	}
 	if (!S_ISREG(path_stat.st_mode))
 	{
 		print_error(cmd);

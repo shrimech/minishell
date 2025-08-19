@@ -108,8 +108,11 @@ bool	export(char *str, t_list **env)
 			(*env) = (*env)->next;
 			i++;
 		}
-		free((*env)->str);
-		(*env)->str = value;
+		if(ft_strchr(str,'='))
+		{
+			free((*env)->str);
+			(*env)->str = value;
+		}
 	}
 	else if (pos == -1)
 		if (!append(env, value))

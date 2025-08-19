@@ -13,7 +13,7 @@
 
 #include "../../include/minishell.h"
 
-static int	open_file(t_data *data, char *filename, int type)
+int	open_file(t_data *data, char *filename, int type)
 {
 	int	fd;
 

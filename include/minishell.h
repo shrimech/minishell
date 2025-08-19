@@ -21,6 +21,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../libft/libft.h"
@@ -49,6 +50,7 @@ typedef struct s_cmd
 	bool			skip_cmd;
 	int				infile;
 	int				outfile;
+	// int 			fd_her;
 	char			**cmd_param;
 	struct s_cmd	*prev;
 	struct s_cmd	*next;
@@ -74,10 +76,16 @@ typedef struct s_data
 	t_list	*env;
 	t_token	*token;
 	t_cmd	*cmd;
+	// int      fd;
 	int		exit_code;
 	int		pip[2];
 	bool	sq;
 }				t_data;
+
+void	handle_sigint(int code);
+
+int	loop_here_doc(t_data *data);
+int	open_file(t_data *data, char *filename, int type);
 
 /* main */
 int		make_env(t_data *data, char **env);

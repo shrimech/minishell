@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:14:16 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/17 02:35:06 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/19 12:36:32 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool	parseline(t_data *data, char *line)
 	}
 	free(line);
 	// print_token(data->token);
-	if (data->token && data->token->prev->type == PIPE)
+	if (data->token && (data->token->prev->type == PIPE || data->token->type == PIPE))
 	{
 		write(2, "Error: syntax error near unexpected token '|'\n", 46);
 		data->exit_code = 2;
@@ -93,6 +93,7 @@ bool	parseline(t_data *data, char *line)
 		free_cmd(&data->cmd);
 		return (false);
 	}
+	// data->fd = loop_here_doc(data);
 	return (check_pipe(data));
 }
 

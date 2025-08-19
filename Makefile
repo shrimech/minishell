@@ -22,6 +22,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 
 clean:
+	make clean -C ./libft
 	rm -f $(OBJS)
 
 fclean: clean
@@ -31,3 +32,12 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+
+
+
+
+
+# minishell> | << P
+# > PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPpp
+# > P

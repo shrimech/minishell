@@ -66,7 +66,7 @@ static void	wait_all(t_data *data)
 	len = len_cmd(tmp);
 	while (len--)
 	{
-		pid = waitpid(0, &status, 0);
+		pid = waitpid(-1, &status, 0);
 		if (pid == g_signal_pid)
 		{
 			if (WIFEXITED(status))
