@@ -60,18 +60,18 @@ int	here_doc(t_data *data, char *word)
 	return (fd);
 }
 
-// int	loop_here_doc(t_data *data)
-// {
-// 	t_token *tmp;
-// 	int fd;
-// 	tmp = data->token;
+int	loop_here_doc(t_data *data)
+{
+	t_token *tmp;
+	int fd;
+	tmp = data->token;
 
-// 	fd = -1;
-// 	while (tmp->next != data->token)
-// 	{
-// 		if (tmp->type == HEREDOC)
-// 			fd = here_doc(data, tmp->next->str);
-// 		tmp = tmp->next;
-// 	}
-// 	return (dup(fd));
-// }
+	fd = -1;
+	while (tmp->next != data->token)
+	{
+		if (tmp->type == HEREDOC)
+			fd = here_doc(data, tmp->next->str);
+		tmp = tmp->next;
+	}
+	return (fd);
+}

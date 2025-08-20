@@ -76,7 +76,7 @@ typedef struct s_data
 	t_list	*env;
 	t_token	*token;
 	t_cmd	*cmd;
-	// int      fd;
+	int      fd;
 	int		exit_code;
 	int		pip[2];
 	bool	sq;

@@ -87,13 +87,15 @@ bool	parseline(t_data *data, char *line)
 		free_token(&data->token);
 		return (false);
 	}
+	data->fd = loop_here_doc(data);
 	if (!data->token || !create_list_cmd(data))
 	{
 		free_token(&data->token);
 		free_cmd(&data->cmd);
 		return (false);
 	}
-	// data->fd = loop_here_doc(data);
+	if(data->fd > 0 && data->token->prev->prev->type ==HEREDOC)
+		data->cmd->prev->infile = data->fd;
 	return (check_pipe(data));
 }
 
