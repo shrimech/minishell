@@ -187,12 +187,12 @@ int	main(int argc, char **argv, char **env)
 {
 	t_data	data;
 	char	*line;
-
+	init_data(&data, argc, argv);
+	if (!make_env(&data, env))
+		free_all(&data, ERR_MALLOC, EXT_MALLOC);
 	while (1)
 	{
-		init_data(&data, argc, argv);
-		if (!make_env(&data, env))
-			free_all(&data, ERR_MALLOC, EXT_MALLOC);
+		data.cmd = NULL;
 		line = readline("minishell> ");
 		if (g_signal_pid != 0)
 			data.exit_code = 128 + g_signal_pid;
@@ -203,7 +203,7 @@ int	main(int argc, char **argv, char **env)
 		add_history(line);
 		if (!parseline(&data, line))
 		{
-			free_all(&data,NULL,-1);
+			free_cmd(&data.cmd);
 			continue ;
 		}
 		if (is_builtin(&data))
