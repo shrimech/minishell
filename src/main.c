@@ -44,7 +44,6 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->env = NULL;
 	data->token = NULL;
 	data->cmd = NULL;
-	data->exit_code = 0;
 	data->pip[0] = -1;
 	data->pip[1] = -1;
 	g_signal_pid = 0;
