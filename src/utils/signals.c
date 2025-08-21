@@ -38,7 +38,7 @@ void	handle_sigint(int code)
 static void	handle_sigsegv(int code)
 {
 	g_signal_pid = code ;
-	// write(2, "Segmentation fault\n", 19);
+	write(2, "Segmentation fault\n", 19);
 	exit(11);
 }
 

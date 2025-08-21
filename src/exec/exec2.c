@@ -98,7 +98,7 @@ void	child_process(t_data *data, t_cmd *cmd, int *pip)
 	path = NULL;
 	if (cmd->skip_cmd)
 		data->exit_code = 1;
-	else if (is_builtin(cmd->cmd_param[0]))
+	else if (is_builtin(data))
 		built(pip, cmd, data);
 	else if (cmd_exist(&path, data, cmd->cmd_param[0]))
 	{

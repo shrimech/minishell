@@ -1,23 +1,31 @@
 #include "../../include/minishell.h"
 
 
-void	redirect_in_out(t_cmd *cmd)
+void	redirect_in_out(t_cmd *cmd, t_token *token)
 {
-    if (cmd->fd_her >= 0)
+    t_token *current_token;
+    
+    current_token = token;
+    while (current_token->next != token && current_token->type != PIPE)
     {
-        dup2(cmd->fd_her, 0);
-        close(cmd->fd_her);
+        
+        if (current_token->type == HEREDOC && cmd->fd_her >= 0)
+        {
+            dup2(cmd->fd_her, 0);
+            close(cmd->fd_her);
+        }
+	    if (current_token->type == RED_IN && cmd->infile >= 0)
+	    {
+	    	dup2(cmd->infile, 0);
+	    	close(cmd->infile);
+	    }
+	    if ((current_token->type == RED_OUT || current_token->type == APPEND) && cmd->outfile >= 0)
+	    {
+	    	dup2(cmd->outfile, 1);
+	    	close(cmd->outfile);
+	    }
+        current_token = current_token->next;
     }
-	if (cmd->infile >= 0)
-	{
-		dup2(cmd->infile, 0);
-		close(cmd->infile);
-	}
-	if (cmd->outfile >= 0)
-	{
-		dup2(cmd->outfile, 1);
-		close(cmd->outfile);
-	}
 }
 
 void setupin(int prev)
@@ -47,7 +55,7 @@ void controlfds(int *prev, int *fd)
     close(fd[1]);
 }
 
-void	processall(t_data *data, t_cmd *cmd)
+void	processall(t_data *data, t_cmd *cmd,t_token *token)
 {
 	char	*path;
 	char	**env;
@@ -55,14 +63,14 @@ void	processall(t_data *data, t_cmd *cmd)
 	path = NULL;
 	if (cmd->skip_cmd)
 		data->exit_code = 1;
-	else if (is_builtin(cmd->cmd_param[0]))
-			launch_builtin(data, cmd);
+	// else if (is_builtin(cmd->cmd_param[0]))
+	// 		launch_builtin(data, cmd);
 	else if (cmd_exist(&path, data, cmd->cmd_param[0]))
 	{
 		env = lst_to_arr(data->env);
 		if (!env)
 			free_all(data, ERR_MALLOC, EXT_MALLOC);
-        redirect_in_out(cmd);
+        redirect_in_out(cmd, token);
 	    execve(path, cmd->cmd_param, env);
 	    free(env);
 	}
@@ -74,16 +82,20 @@ void	processall(t_data *data, t_cmd *cmd)
 
 int pipes(t_data *data)
 {
+    t_token *token;
     int i;
     int status;
     int prev;
     int fd[2];
     int *pid;
 
+    token = data->token;
     i = 1;
     prev = -1;
     t_cmd *tmp;
     t_cmd *current_cmd;
+    // if (!data->cmd)
+    //     return(1);   
     tmp = data->cmd;
     while (tmp->next != data->cmd)
     {
@@ -107,8 +119,14 @@ int pipes(t_data *data)
             signal(SIGQUIT, SIG_DFL);
             setupin(prev);
             setupout(current_cmd, data, fd);
-            processall(data, current_cmd);
+            processall(data, current_cmd,token);
         }
+
+        while(token->next != data->token && token->prev->type != PIPE)
+        {
+            token = token->next;
+        }
+        token = token->next;
         controlfds(&prev, fd);
         k++;
         current_cmd = current_cmd->next;
@@ -128,5 +146,6 @@ int pipes(t_data *data)
         }
     }
     signal(SIGINT, &handle_sigint);
+
     return (1);
 }

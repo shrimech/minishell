@@ -176,9 +176,9 @@ bool	parseline(t_data *data, char *line)
 		free_cmd(&data->cmd);
 		return (false);
 	}
+	data->fd = loop_here_doc(data);
 	// if(data->fd > 0 && data->token->prev->prev->type ==HEREDOC)
 		// data->cmd->prev->infile = data->fd;
-	data->fd = loop_here_doc(data);
 	if (data->fd == -5)
 		return (false);
 	return (check_pipe(data));
@@ -200,21 +200,20 @@ int	main(int argc, char **argv, char **env)
 		if (!line)
 			free_all(&data, "exit\n", data.exit_code);
 		if (empty_line(line))
-		continue ;
+			continue ;
 		add_history(line);
 		if (!parseline(&data, line))
 		{
 			free_all(&data,NULL,-1);
 			continue ;
 		}
-		if (is_builtin(data.cmd->cmd_param[0]))
+		if (is_builtin(&data))
 			launch_builtin(&data, data.cmd);
-		else if (!pipes(&data))
+		
+		else if (data.cmd->cmd_param && data.cmd->cmd_param[0] && !pipes(&data))
 			free_all(&data, ERR_PIPE, EXT_PIPE);
 		free_cmd(&data.cmd);
 		free_token(&data.token);
-		g_signal_pid = 0;
-
 	}
 	rl_clear_history();
 	free_all(&data, NULL, -1);
