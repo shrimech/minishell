@@ -15,28 +15,28 @@
 
 static int	almost_atoi(char *str, int *err)
 {
-	unsigned long long	ret;
+	unsigned long long	num;
 	int					i;
 	int					j;
-	int					pn;
+	int					sign;
 
 	i = 0;
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
 		i++;
-	pn = 1;
+	sign = 1;
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
-			pn = -1;
+			sign = -1;
 	j = i;
-	ret = 0;
+	num = 0;
 	while ('0' <= str[i] && str[i] <= '9')
-		ret = ret * 10 + (str[i++] - 48);
+		num = num * 10 + (str[i++] - 48);
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] || i - j > 20 || ((pn == -1 && (ret - 1) > LONG_MAX) || \
-		(pn == 1 && (ret > LONG_MAX))))
+	if (str[i] || i - j > 20 || ((sign == -1 && (num - 1) > LONG_MAX) || \
+		(sign == 1 && (num > LONG_MAX))))
 		*err = 1;
-	return ((int)((ret * pn) % 256));
+	return ((int)((num * sign) % 256));
 }
 
 void	ft_exit(t_data *data, char **args)

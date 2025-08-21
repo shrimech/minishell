@@ -15,34 +15,42 @@
 
 void	clear_rl_line(void)
 {
-	rl_replace_line("", 0);
 	rl_on_new_line();
+	rl_replace_line("", 0);
+}
+
+void	handle_here_doc_sigint(int code)
+{
+	g_signal_pid = code;
+	rl_done = 1;
+	printf("\n");
+	exit(130);
 }
 
 void	handle_sigint(int code)
 {
-	(void)code;
-	printf("\n");
+	g_signal_pid = code ;
 	clear_rl_line();
-	if (g_signal_pid == 0)
-		rl_redisplay();
+	printf("\n");
+	rl_redisplay();
 }
 
 static void	handle_sigsegv(int code)
 {
-	(void)code;
-	write(2, "Segmentation fault\n", 19);
+	g_signal_pid = code ;
+	// write(2, "Segmentation fault\n", 19);
 	exit(11);
 }
 
 static void	handle_sigabrt(int code)
 {
-	(void)code;
+	g_signal_pid = code ;
 	write(1, "abort\n", 6);
 }
 
-void	signals(void)
+void	signals(t_data **data)
 {
+	(void)data;
 	signal(SIGINT, &handle_sigint);
 	signal(SIGSEGV, &handle_sigsegv);
 	signal(SIGABRT, &handle_sigabrt);

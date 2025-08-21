@@ -66,7 +66,7 @@ static void	wait_all(t_data *data)
 	len = len_cmd(tmp);
 	while (len--)
 	{
-		pid = waitpid(-1, &status, 0);
+		pid = waitpid(g_signal_pid, &status, 0);
 		if (pid == g_signal_pid)
 		{
 			if (WIFEXITED(status))
@@ -96,7 +96,7 @@ bool	exec(t_data *data)
 	tmp = tmp->next;
 	while (tmp != data->cmd)
 	{
-		if (pipe(pip) == -1)
+		if (tmp->next != data->cmd && pipe(pip) == -1)
 			return (-1);
 		exec_cmd(data, tmp, pip);
 		tmp = tmp->next;

@@ -35,7 +35,7 @@ static bool	check_dir(char **path, char *cmd, t_data *data)
 	return (true);
 }
 
-static bool	cmd_exist(char **path, t_data *data, char *cmd)
+bool	cmd_exist(char **path, t_data *data, char *cmd)
 {
 	if (!ft_strchr(cmd, '/'))
 		*path = find_cmd(data, cmd, data->env);
@@ -81,6 +81,7 @@ static void	redirect_in_out(t_data *data, t_cmd *cmd, int *pip)
 
 static void	built(int *pip, t_cmd *cmd, t_data *data)
 {
+	// printf("%d\n%d\n",pip[1],pip[0]);
 	close(pip[0]);
 	if (cmd->outfile < 0 && cmd->next != data->cmd)
 		cmd->outfile = pip[1];

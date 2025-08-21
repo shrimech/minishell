@@ -76,6 +76,7 @@ static bool	add_cmd(t_token **begin, char **command)
 	int		i;
 
 	i = 0;
+	// is_quoted((*begin)->quoted,&i,*command);
 	length = length_cmd(*command, &quotes);
 	if (((length) - (2 * quotes)) < 0)
 		return (true);
@@ -100,17 +101,17 @@ static bool	add_special(t_token **begin, char **command)
 	spe = is_special(*command);
 	if (!spe)
 		return (false);
-	if (spe == INPUT && !append_token(begin, ft_strdup("<"), INPUT))
+	if (spe == RED_IN && !append_token(begin, ft_strdup("<"), RED_IN))
 		return (false);
 	else if (spe == HEREDOC && !append_token(begin, ft_strdup("<<"), HEREDOC))
 		return (false);
-	else if (spe == TRUNC && !append_token(begin, ft_strdup(">"), TRUNC))
+	else if (spe == RED_OUT && !append_token(begin, ft_strdup(">"), RED_OUT))
 		return (false);
 	else if (spe == APPEND && !append_token(begin, ft_strdup(">>"), APPEND))
 		return (false);
 	else if (spe == PIPE && !append_token(begin, ft_strdup("|"), PIPE))
 		return (false);
-	if (spe == INPUT || spe == TRUNC || spe == PIPE)
+	if (spe == RED_IN || spe == RED_OUT || spe == PIPE)
 		(*command)++;
 	else if (spe == HEREDOC || spe == APPEND)
 		(*command) += 2;

@@ -33,9 +33,9 @@ int	is_special(char *str)
 	if (*str && ft_strlen(str) >= 1)
 	{
 		if (!ft_strncmp(str, "<", 1))
-			return (INPUT);
+			return (RED_IN);
 		if (!ft_strncmp(str, ">", 1))
-			return (TRUNC);
+			return (RED_OUT);
 		if (!ft_strncmp(str, "|", 1))
 			return (PIPE);
 	}

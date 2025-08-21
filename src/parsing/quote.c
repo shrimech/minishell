@@ -10,10 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
-void	quoting_choice(bool *dq, bool *sq, int *index, char c)
+void is_quoted(bool *dq, int *index, char *c)
+{
+	while (c[*index])
+	{
+		if (c[*index] == '\'' || c[*index] == '"')
+			*dq = true;
+		(*index)++;
+	}
+}
+
+void quoting_choice(bool *dq, bool *sq, int *index, char c)
 {
 	if ((c == '\'' || c == '"') && !*sq && !*dq)
 	{
@@ -35,17 +44,18 @@ void	quoting_choice(bool *dq, bool *sq, int *index, char c)
 	}
 }
 
-int	open_quote(t_data *data, char *line)
+int open_quote(t_data *data, char *line)
 {
-	bool	dq;
-	bool	sq;
-	int		i;
+	bool dq;
+	bool sq;
+	int i;
 
 	i = 0;
 	dq = false;
 	sq = false;
 	while (line && line[i])
 	{
+
 		quoting_choice(&dq, &sq, &i, line[i]);
 		if (line[i] && line[i] != '\'' && line[i] != '"')
 			++i;

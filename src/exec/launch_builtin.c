@@ -43,6 +43,7 @@ bool	launch_builtin(t_data *data, t_cmd *cmd)
 	int	save_stdout;
 
 	save_stdout = -1;
+	// printf("%d\n",cmd->outfile);
 	if (cmd->outfile >= 0)
 	{
 		save_stdout = dup(1);

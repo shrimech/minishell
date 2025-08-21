@@ -15,6 +15,9 @@
 
 static int	token_new_elem(t_token **new, char *str, int type)
 {
+	// int i;
+
+	// i = 0;
 	if (!str)
 		return (0);
 	(*new) = malloc(sizeof(t_token));
@@ -25,6 +28,7 @@ static int	token_new_elem(t_token **new, char *str, int type)
 	}
 	(*new)->str = str;
 	(*new)->type = type;
+	// printf("%s\n",str);
 	(*new)->next = NULL;
 	(*new)->prev = NULL;
 	return (1);

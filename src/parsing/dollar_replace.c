@@ -113,6 +113,8 @@ int	replace_dollar(char **line, t_data *data)
 			(*line)[i + 1] == '_') && !data->sq && \
 			!add_dollar((*line), &i, &str, data))
 			return (0);
+		if(*str == '\0' && !add_char(&(*line)[i],&str,data,&i))
+			return(0);
 		if ((*line)[i] && !add_char(&(*line)[i], &str, data, &i))
 			return (0);
 	}

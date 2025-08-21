@@ -19,11 +19,11 @@ int	open_file(t_data *data, char *filename, int type)
 
 	(void )data;
 	fd = -2;
-	if (type == INPUT)
+	if (type == RED_IN)
 		fd = open(filename, O_RDONLY, 0644);
 	// else if (type == HEREDOC)
 	// 	fd = here_doc(data, filename);
-	else if (type == TRUNC)
+	else if (type == RED_OUT)
 		fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	else if (type == APPEND)
 		fd = open(filename, O_CREAT | O_WRONLY | O_APPEND, 0644);
@@ -34,13 +34,13 @@ int	open_file(t_data *data, char *filename, int type)
 
 static bool	get_in(t_data *data, t_token *tmp, t_cmd *cmd)
 {
-	if (tmp->type == INPUT)
+	if (tmp->type == RED_IN)
 	{
 		if (cmd->infile >= 0)
 			close(cmd->infile);
 		if (tmp == tmp->next || tmp->next->type <= 5)
 			return (print_error_token(tmp, data));
-		cmd->infile = open_file(data, tmp->next->str, INPUT);
+		cmd->infile = open_file(data, tmp->next->str, RED_IN);
 		if (cmd->infile == -1)
 			return (false);
 	}
@@ -78,13 +78,13 @@ bool	get_infile(t_data *data, t_token *token, t_cmd *cmd)
 
 static bool	get_out(t_token *tmp, t_cmd *cmd, t_data *data)
 {
-	if (tmp->type == TRUNC)
+	if (tmp->type == RED_OUT)
 	{
 		if (cmd->outfile >= 0)
 			close(cmd->outfile);
 		if (tmp == tmp->next || tmp->next->type <= 5)
 			return (print_error_token(tmp, data));
-		cmd->outfile = open_file(NULL, tmp->next->str, TRUNC);
+		cmd->outfile = open_file(NULL, tmp->next->str, RED_OUT);
 		if (cmd->outfile == -1)
 			return (false);
 	}

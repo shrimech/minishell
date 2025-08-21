@@ -27,9 +27,9 @@
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 
-# define INPUT		1	//"<"
+# define RED_IN		1	//"<"
 # define HEREDOC	2	//"<<"
-# define TRUNC		3	//">"
+# define RED_OUT	3	//">"
 # define APPEND		4	//">>"
 # define PIPE		5	//"|"
 # define CMD		6	//"|"
@@ -50,7 +50,7 @@ typedef struct s_cmd
 	bool			skip_cmd;
 	int				infile;
 	int				outfile;
-	// int 			fd_her;
+	int 			fd_her;
 	char			**cmd_param;
 	struct s_cmd	*prev;
 	struct s_cmd	*next;
@@ -60,6 +60,7 @@ typedef struct s_token
 {
 	char			*str;
 	int				type;
+	bool			quoted;
 	struct s_token	*prev;
 	struct s_token	*next;
 }				t_token;
@@ -71,6 +72,14 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct s_here
+{
+	char *del;
+	int index;
+	int pipe;
+	struct s_here *next;
+} t_here;
+
 typedef struct s_data
 {
 	t_list	*env;
@@ -81,7 +90,9 @@ typedef struct s_data
 	int		pip[2];
 	bool	sq;
 }				t_data;
-
+t_here *global_her(t_here *status);
+void	is_quoted(bool *dq, int *index, char *c);
+void	handle_here_doc_sigint(int code);
 void	handle_sigint(int code);
 
 int	loop_here_doc(t_data *data);
@@ -111,7 +122,7 @@ int		replace_dollar(char **line, t_data *data);
 
 //signals.c
 void	clear_rl_line(void);
-void	signals(void);
+void	signals(t_data **data);
 
 //create_token.c
 bool	create_list_token(t_token **begin, char *command);
@@ -192,5 +203,11 @@ void	signals2(void);
 void	print_token(t_token *token);
 void	print_tab(char **tab);
 void	print_cmd(t_cmd *cmd);
+
+
+
+bool	cmd_exist(char **path, t_data *data, char *cmd);
+int pipes(t_data *data);
+
 
 #endif
