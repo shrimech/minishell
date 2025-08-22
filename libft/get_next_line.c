@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:32:54 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 19:30:15 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
-int	how_many(t_list_gnl *list, char **line)
+int	how_many(t_envirement_gnl *list, char **line)
 {
-	t_list_gnl	*tmp;
+	t_envirement_gnl	*tmp;
 	int			len;
 	int			i;
 
@@ -24,7 +23,7 @@ int	how_many(t_list_gnl *list, char **line)
 	while (tmp->next != list)
 	{
 		len += ft_strlen(tmp->content);
-		tmp = tmp -> next;
+		tmp = tmp->next;
 	}
 	i = -1;
 	while (tmp->content[++i])
@@ -40,7 +39,7 @@ int	how_many(t_list_gnl *list, char **line)
 	return (len);
 }
 
-int	make_line(t_list_gnl *list, char **line)
+int	make_line(t_envirement_gnl *list, char **line)
 {
 	int	i;
 	int	j;
@@ -53,39 +52,39 @@ int	make_line(t_list_gnl *list, char **line)
 	while (j < len)
 	{
 		i = -1;
-		while (list -> content[++i])
+		while (list->content[++i])
 		{
-			if (list -> content[i] == '\n')
+			if (list->content[i] == '\n')
 			{
-				(*line)[j++] = list -> content[i];
+				(*line)[j++] = list->content[i];
 				break ;
 			}
-			(*line)[j++] = list -> content[i];
+			(*line)[j++] = list->content[i];
 		}
-		list = list -> next;
+		list = list->next;
 	}
 	(*line)[j] = '\0';
 	return (1);
 }
 
-int	new_line(t_list_gnl *list)
+int	new_line(t_envirement_gnl *list)
 {
 	int			i;
-	t_list_gnl	*current;
+	t_envirement_gnl	*current;
 
 	if (!list)
 		return (0);
 	current = list->prev;
 	i = -1;
-	while (current -> content[++i])
-		if (current -> content[i] == '\n')
+	while (current->content[++i])
+		if (current->content[i] == '\n')
 			return (1);
 	return (0);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list_gnl	*list = NULL;
+	static t_envirement_gnl	*list = NULL;
 	char				*line;
 
 	line = NULL;
@@ -118,7 +117,7 @@ char	*get_next_line(int fd)
 // 	{
 // 		str = get_next_line(fd);
 // 		if (!str)
-// 			break;
+// 			break ;
 // 		printf("%s", str);
 // 		free(str);
 // 	}

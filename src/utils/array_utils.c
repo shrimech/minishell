@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 13:13:09 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:15:05 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 // Transform lst to array
-char	**lst_to_arr(t_list *env)
+char	**lst_to_arr(t_envirement *env)
 {
-	t_list	*lst;
+	t_envirement	*lst;
 	char	**dest;
 	int		i;
 

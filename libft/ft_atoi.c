@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 int	ft_atoi(const char *nptr)
@@ -35,8 +34,8 @@ int	ft_atoi(const char *nptr)
 }
 
 // #include <stdio.h>
-// 
+//
 // int main()
 // {
-	// printf("%d\n", ft_atoi("-2147483648"));
+// printf("%d\n", ft_atoi("-2147483648"));
 // }

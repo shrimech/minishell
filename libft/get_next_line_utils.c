@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:37:32 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 19:29:20 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	list_new_elem_str(t_list_gnl **new, char *elem)
+static int	list_new_elem_str(t_envirement_gnl **new, char *elem)
 {
-	(*new) = malloc(sizeof(t_list_gnl));
+	(*new) = malloc(sizeof(t_envirement_gnl));
 	if (*new == NULL)
 		return (0);
 	(*new)->content = elem;
@@ -23,9 +23,9 @@ static int	list_new_elem_str(t_list_gnl **new, char *elem)
 	return (1);
 }
 
-int	add_to_list_gnl(t_list_gnl **list, char *buf)
+int	add_to_list_gnl(t_envirement_gnl **list, char *buf)
 {
-	t_list_gnl	*new;
+	t_envirement_gnl	*new;
 
 	if (!list_new_elem_str(&new, buf))
 		return (0);
@@ -45,10 +45,10 @@ int	add_to_list_gnl(t_list_gnl **list, char *buf)
 	return (1);
 }
 
-int	free_list_gnl(t_list_gnl **list)
+int	free_list_gnl(t_envirement_gnl **list)
 {
-	t_list_gnl	*tmp;
-	t_list_gnl	*current;
+	t_envirement_gnl	*tmp;
+	t_envirement_gnl	*current;
 
 	current = *list;
 	if (!*list)
@@ -66,7 +66,7 @@ int	free_list_gnl(t_list_gnl **list)
 	return (0);
 }
 
-int	write_in_list_gnl(int fd, t_list_gnl **list)
+int	write_in_list_gnl(int fd, t_envirement_gnl **list)
 {
 	char	*buf;
 	int		r_res;
@@ -93,9 +93,9 @@ int	write_in_list_gnl(int fd, t_list_gnl **list)
 	return (1);
 }
 
-int	clear_list_gnl(t_list_gnl **list)
+int	clear_list_gnl(t_envirement_gnl **list)
 {
-	t_list_gnl	*last;
+	t_envirement_gnl	*last;
 	char		*content;
 	int			i;
 	int			j;
@@ -104,17 +104,17 @@ int	clear_list_gnl(t_list_gnl **list)
 		return (0);
 	last = (*list)->prev;
 	i = 0;
-	while (last -> content[i] != '\n' && last -> content[i])
+	while (last->content[i] != '\n' && last->content[i])
 		i++;
-	if (last -> content[i] == '\n' && last -> content[i])
+	if (last->content[i] == '\n' && last->content[i])
 		i++;
-	j = ft_strlen(last -> content);
+	j = ft_strlen(last->content);
 	content = malloc(sizeof(char) * ((j - i) + 1));
 	if (!content)
 		return (free_list_gnl(list));
 	j = 0;
-	while (last -> content[i])
-		content[j++] = last -> content[i++];
+	while (last->content[i])
+		content[j++] = last->content[i++];
 	content[j] = '\0';
 	free_list_gnl(list);
 	add_to_list_gnl(list, content);

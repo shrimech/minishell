@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:13:43 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:16:07 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	free_list(t_list **list)
+int	free_list(t_envirement **list)
 {
-	t_list	*tmp;
-	t_list	*current;
+	t_envirement	*tmp;
+	t_envirement	*current;
 
 	if (!(*list))
 		return (0);
@@ -33,9 +33,9 @@ int	free_list(t_list **list)
 	return (0);
 }
 
-static int	list_new_elem_str(t_list **new, char *elem)
+static int	list_new_elem_str(t_envirement **new, char *elem)
 {
-	(*new) = malloc(sizeof(t_list));
+	(*new) = malloc(sizeof(t_envirement));
 	if (*new == NULL)
 		return (0);
 	(*new)->str = elem;
@@ -44,16 +44,16 @@ static int	list_new_elem_str(t_list **new, char *elem)
 	return (1);
 }
 
-static void	add_first(t_list **list, t_list *new)
+static void	add_first(t_envirement **list, t_envirement *new)
 {
 	(*list) = new;
 	(*list)->prev = *list;
 	(*list)->next = *list;
 }
 
-size_t	len_list(t_list *list)
+size_t	len_list(t_envirement *list)
 {
-	t_list	*tmp;
+	t_envirement	*tmp;
 	size_t	i;
 
 	if ((list))
@@ -70,9 +70,9 @@ size_t	len_list(t_list *list)
 	return (0);
 }
 
-int	append(t_list **list, char *elem)
+int	append(t_envirement **list, char *elem)
 {
-	t_list	*new;
+	t_envirement	*new;
 
 	if (!list_new_elem_str(&new, elem))
 		return (0);

@@ -32,6 +32,6 @@ char	*ft_strdup(const char *src)
 
 // int main(void)
 // {
-	// printf("%s\n", ft_strdup("une chaine de characteres."));
-	// return 0;
+// printf("%s\n", ft_strdup("une chaine de characteres."));
+// return (0);
 // }

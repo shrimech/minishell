@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:11:11 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:11:12 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static bool	syntax(char *str)
 }
 
 //checks if identifier already in env
-static int	exist(char *str, t_list *env)
+static int	exist(char *str, t_envirement *env)
 {
 	int		i;
 	int		j;
-	t_list	*tmp;
+	t_envirement	*tmp;
 
 	if (!env)
 		return (-1);
@@ -58,11 +58,11 @@ static int	exist(char *str, t_list *env)
 	return (-1);
 }
 
-//static bool	unset(char *str, t_list **env)
+//static bool	unset(char *str, t_envirement **env)
 //{
 //	int		pos;
 //	int		i;
-//	t_list	**tmp;
+//	t_envirement	**tmp;
 
 //	if (!str || !(*str))
 //		return (false);
@@ -87,7 +87,7 @@ static int	exist(char *str, t_list *env)
 //	return (false);
 //}
 
-static void	check_env(t_list *tmp, t_list **env)
+static void	check_env(t_envirement *tmp, t_envirement **env)
 {
 	if (tmp == (*env))
 		(*env) = tmp->next;
@@ -95,11 +95,11 @@ static void	check_env(t_list *tmp, t_list **env)
 		(*env) = NULL;
 }
 
-static bool	unset(char *str, t_list **env)
+static bool	unset(char *str, t_envirement **env)
 {
 	int		pos;
 	int		i;
-	t_list	*tmp;
+	t_envirement	*tmp;
 
 	if (!str || !(*str))
 		return (false);
@@ -124,7 +124,7 @@ static bool	unset(char *str, t_list **env)
 	return (false);
 }
 
-int	ft_unset(char **str, t_list **env)
+int	ft_unset(char **str, t_envirement **env)
 {
 	int	exit_code;
 	int	i;

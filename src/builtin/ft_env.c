@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:10:05 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:10:06 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #include "../../include/minishell.h"
 
-int	ft_env(t_list *env)
+int	ft_env(t_envirement *env)
 {
-	t_list	*temp;
+	t_envirement	*temp;
 
 	temp = env;
 	if (!temp)

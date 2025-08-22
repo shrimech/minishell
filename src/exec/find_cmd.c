@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:11:49 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:11:50 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	ft_strslashjoin(char *dest, char *str, char *env, int *index)
 	return (0);
 }
 
-static char	*create_paths(t_list *env, int len)
+static char	*create_paths(t_envirement *env, int len)
 {
-	t_list	*tmp;
+	t_envirement	*tmp;
 
 	tmp = env;
 	while (len--)
@@ -52,7 +52,7 @@ static char	*cmd_not_found(char *sample)
 	return (NULL);
 }
 
-char	*find_cmd(t_data *data, char *sample, t_list *env)
+char	*find_cmd(t_data *data, char *sample, t_envirement *env)
 {
 	char		*paths;
 	char		path[PATH_MAX];

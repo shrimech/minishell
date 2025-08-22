@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size)
@@ -42,11 +41,11 @@ void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size)
 //     // On recherche une valeur existante :
 //     found = ft_memchr( data, 50, size );
 //     printf( "50 is %s\n", ( found != NULL ? "found" : "not found" ) );
-//     if ( found != NULL ) 
-//	   {
+//     if ( found != NULL )
+//		{
 //         printf( "La valeur à la position calculée est %d\n",
-//	   *((char *) found) );
+//		*((char *) found) );
 //     }
 
-//     return EXIT_SUCCESS;
+//     return (EXIT_SUCCESS);
 // }

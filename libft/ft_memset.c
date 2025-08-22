@@ -1,16 +1,14 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:16:49 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 19:11:31 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 08:49:00 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -21,7 +19,7 @@ void	*ft_memset(void *pointer, int value, size_t count)
 	str = pointer;
 	while (count--)
 	{
-		*str = (unsigned char) value;
+		*str = (unsigned char)value;
 		str++;
 	}
 	return (pointer);
@@ -52,5 +50,5 @@ void	*ft_memset(void *pointer, int value, size_t count)
 //     }
 //     printf( "\n" );
 
-//     return 0;
+//     return (0);
 // }

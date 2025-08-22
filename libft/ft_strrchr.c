@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 char	*ft_strrchr(const char *string, int searchedChar)
@@ -32,5 +31,5 @@ char	*ft_strrchr(const char *string, int searchedChar)
 // {
 // 	printf("%s\n", ft_strrchr("je cherche une lettre", 'e'));
 // 	printf("%s\n", strrchr("je cherche une lettre", 'e'));
-// 	return 0;
+// 	return (0);
 // }

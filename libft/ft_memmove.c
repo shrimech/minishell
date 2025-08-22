@@ -18,8 +18,8 @@ void	*ft_memmove(void *destination, const void *source, size_t size)
 	unsigned char	*d;
 	unsigned char	*s;
 
-	d = (unsigned char *) destination;
-	s = (unsigned char *) source;
+	d = (unsigned char *)destination;
+	s = (unsigned char *)source;
 	i = -1;
 	if (d > s)
 		while (size-- > 0)
@@ -29,10 +29,10 @@ void	*ft_memmove(void *destination, const void *source, size_t size)
 			d[i] = s[i];
 	return (destination);
 }
-// 
+//
 // int main(void)
 // {
-	// char sResult[] = {67, 68, 67, 68, 69, 0, 45};
-	// char *dest = ft_memmove(sResult + 1, sResult, 2);
-	// printf("%s\n", dest);
+// char sResult[] = {67, 68, 67, 68, 69, 0, 45};
+// char *dest = ft_memmove(sResult + 1, sResult, 2);
+// printf("%s\n", dest);
 // }

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:14:16 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/19 12:36:32 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:07:28 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ pid_t	g_signal_pid;
 
 int	make_env(t_data *data, char **env)
 {
-	t_list	*list;
+	t_envirement	*list;
 	int		i;
 	char	*tmp;
 
