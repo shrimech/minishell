@@ -9,6 +9,7 @@ SRCS = ./src/main.c \
 	./src/parsing/create_token.c ./src/parsing/create_cmd.c ./src/parsing/cmd_fd.c \
 	./src/utils/signals2.c ./src/utils/list_utils.c ./src/utils/signals.c ./src/utils/list_cmd.c \
 	./src/utils/list_token.c ./src/utils/ms_utils.c ./src/utils/free.c ./src/utils/array_utils.c \
+	./src/utils/init.c ./src/utils/herdoc_utils.c \
 	./src/builtin/ft_unset.c ./src/builtin/ft_pwd.c ./src/builtin/ft_env.c ./src/builtin/ft_export.c \
 	./src/builtin/ft_cd.c ./src/builtin/ft_echo.c ./src/builtin/ft_exit.c \
 	./src/exec/here_doc.c ./src/exec/exec.c ./src/exec/launch_builtin.c ./src/exec/find_cmd.c ./src/exec/exec2.c \

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 09:25:36 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 20:04:56 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 23:35:41 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@
 # define EXT_PIPE 1
 # define EXT_FORK 1
 
-extern pid_t	g_signal_pid;
 
 #endif

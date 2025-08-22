@@ -6,13 +6,14 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:09:07 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 21:09:56 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 23:39:19 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+// *********** --- global varillable ---******************//
 /* ---------- External Includes ---------- */
 # include "../libft/get_next_line.h"
 # include "../libft/libft.h"
@@ -28,12 +29,15 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-/* ---------- Internal Includes ---------- */
+// ************* --- Internal Includes --- ****************//
 # include "defines.h"
 # include "execution.h"
 # include "parsing.h"
 
-/* ---------- Core Structure ---------- */
+// *********** --- global varillable ---******************//
+extern pid_t	g_signal_pid;
+
+// *********** --- Core Structure --- ******************* //
 typedef struct s_data
 {
 	t_envirement	*env;
@@ -45,7 +49,7 @@ typedef struct s_data
 	bool			sq;
 }					t_data;
 
-/* ---------- Init ---------- */
+//******************* --- Init --- ********************** //
 int					make_env(t_data *data, char **env);
 bool				make_env2(t_data *data);
 
@@ -68,6 +72,8 @@ bool				check_pipe(t_data *data);
 void				absolute_path(char **path, char *cmd, t_data *data);
 void				search_and_replace(char *str, char *value,
 						t_envirement **env, int pos);
+void				ft_delimitre(char *line);
+void				init_data(t_data *data, int argc, char **argv);
 
 /* ---------- Debug ---------- */
 void				print_token(t_token *token);

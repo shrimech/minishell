@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:11:58 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 20:07:44 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 00:32:10 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ static int	read_in_stdin(t_data *data, int fd, char *word)
 		{
 			buf = NULL;
 			buf = readline("> ");
-			if (g_signal_pid == 2)
-			{
-				free(buf);	
-				return (3);
-			}
 			if (!buf)
 			{
 				print_error("warning: here-document delimited by end-of-file ");
@@ -74,29 +69,34 @@ static int	read_in_stdin(t_data *data, int fd, char *word)
 	return (true);
 }
 
+char *h_name(void)
+{
+	int pid;
+
+	pid = fork();
+	if (pid == 0)
+		 exit (0);
+	return(ft_strjoin("/tmp/" , ft_itoa(pid)));
+}
+
 int	here_doc(t_data *data, char *word)
 {
 	int	fd;
+	char *he_name = h_name();
 
-	fd = open(".heredoc.tmp", O_CREAT | O_WRONLY , 0644);
+	fd = open(he_name, O_CREAT | O_WRONLY , 0644);
 	if (fd < 0)
 		return (-1);
 	int k = read_in_stdin(data, fd, word);
 	if (k == 2)
 	{
-		// unlink(".hercoc.tmp");
-		printf("--------------");
+		unlink(he_name);
 		close(fd);
 		return(-5);
 	}
-	if (k == 0)
-	{
-		// unlink(".heredoc.tmp");
-		return (-1);
-	}
-	fd = open(".heredoc.tmp", O_RDONLY);
+	fd = open(he_name, O_RDONLY);
 	if (fd > 0)
-		unlink(".heredoc.tmp");
+		unlink(he_name);
 	return (fd);
 }
 
@@ -123,7 +123,7 @@ int	loop_here_doc(t_data *data)
 			{
 				current_cmd->fd_her = here_doc(data, tmp->next->str);
 				if (current_cmd->fd_her == -5)
-					return(printf("++++++++++++++\n"), -5);
+					return(-5);
 			}
 			tmp = tmp->next;
 		}
