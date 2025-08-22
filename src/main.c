@@ -206,13 +206,14 @@ int	main(int argc, char **argv, char **env)
 			free_cmd(&data.cmd);
 			continue ;
 		}
-		if (is_builtin(&data))
+		if (data.cmd->next == data.cmd && is_builtin(data.cmd))
 			launch_builtin(&data, data.cmd);
 		
 		else if (data.cmd->cmd_param && data.cmd->cmd_param[0] && !pipes(&data))
 			free_all(&data, ERR_PIPE, EXT_PIPE);
 		free_cmd(&data.cmd);
 		free_token(&data.token);
+		g_signal_pid = 0;
 	}
 	rl_clear_history();
 	free_all(&data, NULL, -1);

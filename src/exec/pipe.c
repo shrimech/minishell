@@ -47,12 +47,15 @@ void setupout(t_cmd *current_cmd, t_data *data, int *fd)
     }
 }
 
-void controlfds(int *prev, int *fd)
+void controlfds(int *prev, int *fd, t_cmd *cmd, t_data *data)
 {
     if (*prev != -1)
         close(*prev);
-    *prev = fd[0];
-    close(fd[1]);
+    else if (cmd->next != data->cmd)
+    {
+        *prev = fd[0];
+        close(fd[1]);
+    }
 }
 
 void	processall(t_data *data, t_cmd *cmd,t_token *token)
@@ -60,11 +63,12 @@ void	processall(t_data *data, t_cmd *cmd,t_token *token)
 	char	*path;
 	char	**env;
 
+    
 	path = NULL;
 	if (cmd->skip_cmd)
 		data->exit_code = 1;
-	// else if (is_builtin(cmd->cmd_param[0]))
-	// 		launch_builtin(data, cmd);
+	else if (is_builtin(cmd))
+			launch_builtin(data, cmd);
 	else if (cmd_exist(&path, data, cmd->cmd_param[0]))
 	{
 		env = lst_to_arr(data->env);
@@ -127,11 +131,12 @@ int pipes(t_data *data)
             token = token->next;
         }
         token = token->next;
-        controlfds(&prev, fd);
+        controlfds(&prev, fd, current_cmd, data);
         k++;
         current_cmd = current_cmd->next;
     }
-    close(prev);
+    if (prev != -1)
+        close(prev);
     int j = 0;
     while(j < i)
     {
@@ -140,8 +145,9 @@ int pipes(t_data *data)
 	    {
             data->exit_code = WEXITSTATUS(status);
 	    }
-        else
+        else if (WIFSIGNALED(status))
         {
+            write(1, "\n", 1);
             data->exit_code = (WTERMSIG(status) + 128);
         }
     }

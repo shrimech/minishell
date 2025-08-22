@@ -184,7 +184,7 @@ char	**get_param(t_data *data, t_token *token);
 
 //exec.c
 bool	exec(t_data *data);
-bool	is_builtin(t_data *cmd);
+bool	is_builtin(t_cmd *cmd);
 
 //launch_builtin.c
 bool	launch_builtin(t_data *data, t_cmd *cmd);

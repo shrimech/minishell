@@ -20,8 +20,8 @@ static bool	check_dir(char **path, char *cmd, t_data *data)
 	stat(*path, &path_stat);
 	if (*cmd == '\0' || (*cmd == '.' && *(cmd + 1) == '.' && *(cmd + 2) != '/'))
 	{
-		print_error(cmd);
-		print_error(" : command not found\n");
+		// print_error(cmd);
+		ft_putstr_fd("blach : command not found\n", 2);
 		data->exit_code = 127;
 		return (false);
 	}
@@ -98,7 +98,7 @@ void	child_process(t_data *data, t_cmd *cmd, int *pip)
 	path = NULL;
 	if (cmd->skip_cmd)
 		data->exit_code = 1;
-	else if (is_builtin(data))
+	else if (is_builtin(cmd))
 		built(pip, cmd, data);
 	else if (cmd_exist(&path, data, cmd->cmd_param[0]))
 	{

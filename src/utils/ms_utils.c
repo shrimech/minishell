@@ -75,8 +75,8 @@ void	absolute_path(char **path, char *cmd, t_data *data)
 		free_all(data, ERR_MALLOC, EXT_MALLOC);
 	if (access((*path), F_OK))
 	{
-		write(2, (*path), ft_strlen((*path)));
-		write(2, " : command not found\n", 21);
+		// write(2, (*path), ft_strlen((*path)));
+		write(2, "blach : command not found\n", 27);
 		free(*path);
 		*path = NULL;
 	}

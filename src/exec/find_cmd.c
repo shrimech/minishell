@@ -46,8 +46,9 @@ static char	*create_paths(t_list *env, int len)
 
 static char	*cmd_not_found(char *sample)
 {
-	write(2, sample, ft_strlen(sample));
-	write(2, " : command not found\n", 21);
+	(void)sample;
+	// write(2, sample, ft_strlen(sample));
+	write(2, "blach : command not found\n", 27);
 	return (NULL);
 }
 
