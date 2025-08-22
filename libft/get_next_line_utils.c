@@ -96,9 +96,9 @@ int	write_in_list_gnl(int fd, t_envirement_gnl **list)
 int	clear_list_gnl(t_envirement_gnl **list)
 {
 	t_envirement_gnl	*last;
-	char		*content;
-	int			i;
-	int			j;
+	char				*content;
+	int					i;
+	int					j;
 
 	if (!list)
 		return (0);

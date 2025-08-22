@@ -54,7 +54,7 @@ static void	add_first(t_envirement **list, t_envirement *new)
 size_t	len_list(t_envirement *list)
 {
 	t_envirement	*tmp;
-	size_t	i;
+	size_t			i;
 
 	if ((list))
 	{

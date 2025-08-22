@@ -39,7 +39,7 @@ static int	end_word(char *str, char *env)
 int	exist_in_env(char *line, int *i, t_data *data)
 {
 	t_envirement	*tmp;
-	int		len;
+	int				len;
 
 	if (line[*i + 1] == '?')
 		return (2);
@@ -61,8 +61,8 @@ int	exist_in_env(char *line, int *i, t_data *data)
 char	*get_elem_env(t_envirement *env, char *key)
 {
 	t_envirement	*tmp;
-	int		len;
-	int		t;
+	int				len;
+	int				t;
 
 	if (!key)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 13:13:09 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:05:43 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 char	**lst_to_arr(t_envirement *env)
 {
 	t_envirement	*lst;
-	char	**dest;
-	int		i;
+	char			**dest;
+	int				i;
 
 	dest = NULL;
 	i = 0;
@@ -70,5 +70,22 @@ void	sort_array(char **arr, int len)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	search_and_replace(char *str, char *value, t_envirement **env, int pos)
+{
+	int	i;
+
+	i = 0;
+	while (i < pos)
+	{
+		(*env) = (*env)->next;
+		i++;
+	}
+	if (ft_strchr(str, '='))
+	{
+		free((*env)->str);
+		(*env)->str = value;
 	}
 }

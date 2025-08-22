@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
-//syntax
+// syntax
 static bool	syntax(char *str)
 {
 	int	i;
@@ -30,11 +29,11 @@ static bool	syntax(char *str)
 	return (true);
 }
 
-//checks if identifier already in env
+// checks if identifier already in env
 static int	exist(char *str, t_envirement *env)
 {
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 	t_envirement	*tmp;
 
 	if (!env)
@@ -58,7 +57,7 @@ static int	exist(char *str, t_envirement *env)
 	return (-1);
 }
 
-//static bool	unset(char *str, t_envirement **env)
+// static bool	unset(char *str, t_envirement **env)
 //{
 //	int		pos;
 //	int		i;
@@ -97,8 +96,8 @@ static void	check_env(t_envirement *tmp, t_envirement **env)
 
 static bool	unset(char *str, t_envirement **env)
 {
-	int		pos;
-	int		i;
+	int				pos;
+	int				i;
 	t_envirement	*tmp;
 
 	if (!str || !(*str))

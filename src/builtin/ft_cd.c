@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../../include/minishell.h"
 
 static int	count_arg(char **params)
@@ -33,8 +31,8 @@ static void	error_malloc(void)
 static void	update_oldpwd(t_data *data)
 {
 	t_envirement	*tmp;
-	char	*test;
-	int		len;
+	char			*test;
+	int				len;
 
 	tmp = data->env;
 	test = NULL;

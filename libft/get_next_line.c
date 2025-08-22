@@ -15,8 +15,8 @@
 int	how_many(t_envirement_gnl *list, char **line)
 {
 	t_envirement_gnl	*tmp;
-	int			len;
-	int			i;
+	int					len;
+	int					i;
 
 	tmp = list;
 	len = 0;
@@ -69,7 +69,7 @@ int	make_line(t_envirement_gnl *list, char **line)
 
 int	new_line(t_envirement_gnl *list)
 {
-	int			i;
+	int					i;
 	t_envirement_gnl	*current;
 
 	if (!list)
@@ -85,7 +85,7 @@ int	new_line(t_envirement_gnl *list)
 char	*get_next_line(int fd)
 {
 	static t_envirement_gnl	*list = NULL;
-	char				*line;
+	char					*line;
 
 	line = NULL;
 	if (fd < 0 && list)

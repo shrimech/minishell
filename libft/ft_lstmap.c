@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-t_envirement	*ft_lstmap(t_envirement *lst, void *(*f)(void *), void (*del)(void *))
+t_envirement	*ft_lstmap(t_envirement *lst, void *(*f)(void *),
+		void (*del)(void *))
 {
 	t_envirement	*new;
 	t_envirement	*first;

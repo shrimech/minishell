@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 19:33:56 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 19:33:56 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 20:40:04 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-// # include <bsd/string.h>
 # include <stdio.h>
 # include <unistd.h>
-// # include "get_next_line.h"
-
-// typedef struct s_envirement {
-//     void *content;
-//     struct s_envirement *next;
-// } t_envirement;
 
 int		ft_atoi(const char *nptr);
 void	*ft_bzero(void *s, size_t n);
@@ -58,15 +51,5 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
-// t_envirement	*ft_lstnew(void *content);
-// void	ft_lstadd_front(t_envirement **lst, t_envirement *new);
-// int		ft_lstsize(t_envirement *lst);
-// t_envirement	*ft_lstlast(t_envirement *lst);
-// void	ft_lstadd_back(t_envirement **lst, t_envirement *new);
-// void	ft_lstdelone(t_envirement *lst, void (*del)(void *));
-// void	ft_lstclear(t_envirement **lst, void (*del)(void *));
-// void	ft_lstiter(t_envirement *lst, void (*f)(void *));
-// t_envirement	*ft_lstmap(t_envirement *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

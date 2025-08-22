@@ -6,15 +6,13 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:10:39 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 09:02:49 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:07:42 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../../include/minishell.h"
 
-//if export and no other args
+// if export and no other args
 static bool	export_no_args(t_envirement *env)
 {
 	char	**arr;
@@ -42,7 +40,7 @@ static bool	export_no_args(t_envirement *env)
 	return (true);
 }
 
-//checks syntax
+// checks syntax
 static bool	valid_identifier(char *str)
 {
 	int	i;
@@ -59,11 +57,11 @@ static bool	valid_identifier(char *str)
 	return (true);
 }
 
-//checks if identifier already in env
+// checks if identifier already in env
 static int	exist(char *str, t_envirement *env)
 {
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 	t_envirement	*tmp;
 
 	if (!env)
@@ -73,15 +71,15 @@ static int	exist(char *str, t_envirement *env)
 		i++;
 	j = 0;
 	tmp = env;
-	if (!ft_strncmp(tmp->str, str, i) && (tmp->str[i] == '\0' || \
-		tmp->str[i] == '='))
+	if (!ft_strncmp(tmp->str, str, i) && (tmp->str[i] == '\0'
+			|| tmp->str[i] == '='))
 		return (j);
 	tmp = tmp->next;
 	j++;
 	while (tmp != env)
 	{
-		if (!ft_strncmp(tmp->str, str, i) && (tmp->str[i] == '\0' || \
-			tmp->str[i] == '='))
+		if (!ft_strncmp(tmp->str, str, i) && (tmp->str[i] == '\0'
+				|| tmp->str[i] == '='))
 			return (j);
 		tmp = tmp->next;
 		j++;
@@ -89,11 +87,10 @@ static int	exist(char *str, t_envirement *env)
 	return (-1);
 }
 
-//export but norm
+// export but norm
 bool	export(char *str, t_envirement **env)
 {
 	int		pos;
-	int		i;
 	char	*value;
 
 	pos = exist(str, (*env));
@@ -102,17 +99,7 @@ bool	export(char *str, t_envirement **env)
 		return (false);
 	if (pos >= 0)
 	{
-		i = 0;
-		while (i < pos)
-		{
-			(*env) = (*env)->next;
-			i++;
-		}
-		if(ft_strchr(str,'='))
-		{
-			free((*env)->str);
-			(*env)->str = value;
-		}
+		search_and_replace(str, value, env, pos);
 	}
 	else if (pos == -1)
 		if (!append(env, value))
@@ -120,7 +107,7 @@ bool	export(char *str, t_envirement **env)
 	return (true);
 }
 
-//export
+// export
 int	ft_export(char **str, t_envirement **env)
 {
 	int	exit_code;
