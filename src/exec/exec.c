@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 bool	is_builtin(t_cmd *cmd)
 {
 	if (!cmd->cmd_param)
-		return(false);
+		return (false);
 	if (!cmd->cmd_param[0])
 		return (false);
-	if (!ft_strncmp("echo", cmd->cmd_param[0], INT_MAX) || !ft_strncmp("cd", cmd->cmd_param[0], INT_MAX) \
-	|| !ft_strncmp("pwd", cmd->cmd_param[0], INT_MAX) || !ft_strncmp("export", cmd->cmd_param[0], INT_MAX) \
-	|| !ft_strncmp("unset", cmd->cmd_param[0], INT_MAX) || !ft_strncmp("env", cmd->cmd_param[0], INT_MAX) \
-	|| !ft_strncmp("exit", cmd->cmd_param[0], INT_MAX))
+	if (!ft_strncmp("echo", cmd->cmd_param[0], INT_MAX) || !ft_strncmp("cd",
+			cmd->cmd_param[0], INT_MAX) || !ft_strncmp("pwd", cmd->cmd_param[0],
+			INT_MAX) || !ft_strncmp("export", cmd->cmd_param[0], INT_MAX)
+		|| !ft_strncmp("unset", cmd->cmd_param[0], INT_MAX)
+		|| !ft_strncmp("env", cmd->cmd_param[0], INT_MAX) || !ft_strncmp("exit",
+			cmd->cmd_param[0], INT_MAX))
 		return (true);
 	return (false);
 }

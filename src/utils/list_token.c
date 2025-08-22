@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   list_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:13:35 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:15:37 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 07:02:10 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
 static int	token_new_elem(t_token **new, char *str, int type)
 {
-	// int i;
-
-	// i = 0;
 	if (!str)
 		return (0);
 	(*new) = malloc(sizeof(t_token));
@@ -28,7 +24,6 @@ static int	token_new_elem(t_token **new, char *str, int type)
 	}
 	(*new)->str = str;
 	(*new)->type = type;
-	// printf("%s\n",str);
 	(*new)->next = NULL;
 	(*new)->prev = NULL;
 	return (1);

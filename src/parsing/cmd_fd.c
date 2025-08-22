@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_fd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:12:19 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:12:20 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 06:50:22 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
@@ -17,12 +16,10 @@ int	open_file(t_data *data, char *filename, int type)
 {
 	int	fd;
 
-	(void )data;
+	(void)data;
 	fd = -2;
 	if (type == RED_IN)
 		fd = open(filename, O_RDONLY, 0644);
-	// else if (type == HEREDOC)
-	// 	fd = here_doc(data, filename);
 	else if (type == RED_OUT)
 		fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	else if (type == APPEND)
@@ -44,16 +41,6 @@ static bool	get_in(t_data *data, t_token *tmp, t_cmd *cmd)
 		if (cmd->infile == -1)
 			return (false);
 	}
-	// else if (tmp->type == HEREDOC)
-	// {
-	// 	if (cmd->infile >= 0)
-	// 		close(cmd->infile);
-	// 	if (tmp == tmp->next || tmp->next->type <= 5)
-	// 		return (print_error_token(tmp, data));
-	// 	cmd->infile = data->fd;
-	// 	if (cmd->infile == -1)
-	// 		return (false);
-	// }
 	return (true);
 }
 

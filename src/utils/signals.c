@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 void	clear_rl_line(void)
@@ -19,17 +18,9 @@ void	clear_rl_line(void)
 	rl_replace_line("", 0);
 }
 
-void	handle_here_doc_sigint(int code)
-{
-	g_signal_pid = code;
-	rl_done = 1;
-	printf("\n");
-	exit(130);
-}
-
 void	handle_sigint(int code)
 {
-	g_signal_pid = code ;
+	g_signal_pid = code;
 	clear_rl_line();
 	printf("\n");
 	rl_redisplay();
@@ -37,14 +28,14 @@ void	handle_sigint(int code)
 
 static void	handle_sigsegv(int code)
 {
-	g_signal_pid = code ;
+	g_signal_pid = code;
 	write(2, "Segmentation fault\n", 19);
 	exit(11);
 }
 
 static void	handle_sigabrt(int code)
 {
-	g_signal_pid = code ;
+	g_signal_pid = code;
 	write(1, "abort\n", 6);
 }
 

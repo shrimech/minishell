@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
-//Transform lst to array
+// Transform lst to array
 char	**lst_to_arr(t_list *env)
 {
 	t_list	*lst;
@@ -39,7 +38,7 @@ char	**lst_to_arr(t_list *env)
 	return (dest);
 }
 
-//swap to elems in array
+// swap to elems in array
 static void	ft_swap_str_tab(int i, int j, char **tab)
 {
 	char	*temp;
@@ -49,7 +48,7 @@ static void	ft_swap_str_tab(int i, int j, char **tab)
 	tab[j] = temp;
 }
 
-//sorts array
+// sorts array
 void	sort_array(char **arr, int len)
 {
 	int	i;
@@ -70,6 +69,6 @@ void	sort_array(char **arr, int len)
 			}
 			j++;
 		}
-	i++;
+		i++;
 	}
 }

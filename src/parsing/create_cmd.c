@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   create_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:12:32 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:12:33 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 06:52:55 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
 static bool	fill_cmd(t_data *data, t_token *tmp)
 {
-	if (!get_infile(data, tmp, data->cmd->prev) && \
-		data->cmd->prev->infile != -1)
+	if (!get_infile(data, tmp, data->cmd->prev)
+		&& data->cmd->prev->infile != -1)
 		return (false);
 	if (data->cmd->prev->infile == -1)
 	{
@@ -24,13 +23,13 @@ static bool	fill_cmd(t_data *data, t_token *tmp)
 		data->cmd->prev->outfile = -1;
 		return (true);
 	}
-	if (!get_outfile(tmp, data->cmd->prev, data) && data->cmd->prev->outfile \
-		!= -1)
+	if (!get_outfile(tmp, data->cmd->prev, data)
+		&& data->cmd->prev->outfile != -1)
 		return (false);
 	if (data->cmd->prev->outfile == -1)
 	{
 		if (data->cmd->prev->infile >= 0)
-			close (data->cmd->prev->infile);
+			close(data->cmd->prev->infile);
 		data->cmd->prev->skip_cmd = true;
 		data->cmd->prev->infile = -1;
 		return (true);

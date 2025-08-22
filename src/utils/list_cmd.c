@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 static int	cmd_new_elem(t_cmd **new, int infile, int outfile, char **cmd_param)
@@ -80,21 +79,21 @@ void	free_cmd(t_cmd **list)
 	*list = NULL;
 }
 
-size_t	len_cmd(t_cmd *list)
-{
-	t_cmd	*tmp;
-	size_t	i;
+// size_t	len_cmd(t_cmd *list)
+// {
+// 	t_cmd	*tmp;
+// 	size_t	i;
 
-	if ((list))
-	{
-		tmp = list;
-		i = 1;
-		while (tmp->next != list)
-		{
-			++i;
-			tmp = tmp->next;
-		}
-		return (i);
-	}
-	return (0);
-}
+// 	if ((list))
+// 	{
+// 		tmp = list;
+// 		i = 1;
+// 		while (tmp->next != list)
+// 		{
+// 			++i;
+// 			tmp = tmp->next;
+// 		}
+// 		return (i);
+// 	}
+// 	return (0);
+// }

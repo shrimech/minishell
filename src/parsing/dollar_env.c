@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 static int	ft_search(char *str, char c)
@@ -48,11 +47,10 @@ int	exist_in_env(char *line, int *i, t_data *data)
 	len = len_list(tmp);
 	while (len--)
 	{
-		if (ft_strncmp(tmp->str, &line[*i + 1], \
-			end_word(&line[*i + 1], tmp->str)) == 0)
+		if (ft_strncmp(tmp->str, &line[*i + 1], end_word(&line[*i + 1],
+					tmp->str)) == 0)
 		{
-			*i += ft_strlen(tmp->str) - \
-				ft_strlen(ft_strchr(tmp->str, '=')) + 1;
+			*i += ft_strlen(tmp->str) - ft_strlen(ft_strchr(tmp->str, '=')) + 1;
 			return (1);
 		}
 		tmp = tmp->next;

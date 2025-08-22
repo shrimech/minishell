@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   create_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:12:39 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:12:40 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 06:53:28 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
@@ -33,8 +32,8 @@ static int	length_cmd(char *command, int *quotes)
 			if (command[i])
 				++i;
 		}
-		if (command[i] && command[i] != '"' && command[i] != '\'' && \
-			!is_space(command[i]) && !is_special(command + i))
+		if (command[i] && command[i] != '"' && command[i] != '\''
+			&& !is_space(command[i]) && !is_special(command + i))
 			++i;
 	}
 	return (i);
@@ -76,7 +75,6 @@ static bool	add_cmd(t_token **begin, char **command)
 	int		i;
 
 	i = 0;
-	// is_quoted((*begin)->quoted,&i,*command);
 	length = length_cmd(*command, &quotes);
 	if (((length) - (2 * quotes)) < 0)
 		return (true);
@@ -131,8 +129,8 @@ bool	create_list_token(t_token **begin, char *command)
 				free_token(begin);
 			return (false);
 		}
-		else if (*command && is_special(command) && \
-					!add_special(begin, &command))
+		else if (*command && is_special(command) && !add_special(begin,
+				&command))
 		{
 			if (*begin)
 				free_token(begin);

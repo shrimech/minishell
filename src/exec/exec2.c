@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 static bool	check_dir(char **path, char *cmd, t_data *data)

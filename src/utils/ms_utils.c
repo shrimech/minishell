@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:13:50 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:13:52 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/22 06:57:03 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
 bool	is_space(char c)
 {
-	if (c && (c == ' ' || c == '\n' || c == '\r' || c == '\f' || c == '\t' \
-	|| c == '\v'))
+	if (c && (c == ' ' || c == '\n' || c == '\r' || c == '\f' || c == '\t'
+			|| c == '\v'))
 		return (true);
 	return (false);
 }
@@ -75,7 +74,6 @@ void	absolute_path(char **path, char *cmd, t_data *data)
 		free_all(data, ERR_MALLOC, EXT_MALLOC);
 	if (access((*path), F_OK))
 	{
-		// write(2, (*path), ft_strlen((*path)));
 		write(2, "blach : command not found\n", 27);
 		free(*path);
 		*path = NULL;

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/minishell.h"
 
 static int	count_args(t_data *data, t_token *token)
@@ -20,15 +19,15 @@ static int	count_args(t_data *data, t_token *token)
 
 	count = 0;
 	tmp = token;
-	if (tmp->type == CMD || (tmp->type == ARG && \
-		tmp->prev != data->token->prev && tmp->prev->type > 5))
-		count ++;
+	if (tmp->type == CMD || (tmp->type == ARG && tmp->prev != data->token->prev
+			&& tmp->prev->type > 5))
+		count++;
 	tmp = tmp->next;
 	while (tmp != data->token && tmp->type != PIPE)
 	{
-		if (tmp->type == CMD || (tmp->type == ARG && \
-		tmp->prev != data->token->prev && tmp->prev->type > 5))
-			count ++;
+		if (tmp->type == CMD || (tmp->type == ARG
+				&& tmp->prev != data->token->prev && tmp->prev->type > 5))
+			count++;
 		tmp = tmp->next;
 	}
 	return (count);
@@ -62,16 +61,16 @@ char	**get_param(t_data *data, t_token *token)
 	if (cmd_param == NULL)
 		return (NULL);
 	tmp = token;
-	if (tmp->type != PIPE && (tmp->type == CMD || (tmp->type == ARG && \
-		tmp->prev != data->token->prev && tmp->prev->type > 5)) && \
-		!add_to_cmd_param(cmd_param, &i, tmp->str))
+	if (tmp->type != PIPE && (tmp->type == CMD || (tmp->type == ARG
+				&& tmp->prev != data->token->prev && tmp->prev->type > 5))
+		&& !add_to_cmd_param(cmd_param, &i, tmp->str))
 		return (free_cmd_param(cmd_param, i));
 	tmp = tmp->next;
 	while (tmp != data->token && tmp->type != PIPE)
 	{
-		if ((tmp->type == CMD || (tmp->type == ARG && \
-			tmp->prev != data->token->prev && tmp->prev->type > 5)) && \
-			!add_to_cmd_param(cmd_param, &i, tmp->str))
+		if ((tmp->type == CMD || (tmp->type == ARG
+					&& tmp->prev != data->token->prev && tmp->prev->type > 5))
+			&& !add_to_cmd_param(cmd_param, &i, tmp->str))
 			return (free_cmd_param(cmd_param, i));
 		tmp = tmp->next;
 	}
