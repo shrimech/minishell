@@ -6,13 +6,11 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:14:16 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 23:35:16 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:45:46 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-pid_t	g_signal_pid;
 
 bool	empty_line(char *line)
 {
@@ -33,10 +31,7 @@ bool	parseline(t_data *data, char *line)
 {
 	ft_delimitre(line);
 	if (open_quote(data, line))
-	{
-		free(line);
-		return (false);
-	}
+		return (free(line), false);
 	if (!replace_dollar(&line, data) || !create_list_token(&data->token, line))
 	{
 		free(line);
@@ -53,8 +48,7 @@ bool	parseline(t_data *data, char *line)
 	if (!data->token || !create_list_cmd(data))
 	{
 		free_token(&data->token);
-		free_cmd(&data->cmd);
-		return (false);
+		return (free_cmd(&data->cmd), false);
 	}
 	data->fd = loop_here_doc(data);
 	if (data->fd == -5)
@@ -62,14 +56,8 @@ bool	parseline(t_data *data, char *line)
 	return (check_pipe(data));
 }
 
-int	main(int argc, char **argv, char **env)
+void	program_loop(t_data data, char *line)
 {
-	t_data	data;
-	char	*line;
-
-	init_data(&data, argc, argv);
-	if (!make_env(&data, env))
-		free_all(&data, ERR_MALLOC, EXT_MALLOC);
 	while (1)
 	{
 		data.cmd = NULL;
@@ -94,6 +82,20 @@ int	main(int argc, char **argv, char **env)
 		free_token(&data.token);
 		g_signal_pid = 0;
 	}
+}
+
+int	main(int ac, char **av, char **env)
+{
+	t_data	data;
+	char	*line;
+
+	line = NULL;
+	if (ac != 1)
+		return (write(2, "run it with ./minishell\n", 25), 1);
+	init_data(&data, ac, av);
+	if (!make_env(&data, env))
+		free_all(&data, ERR_MALLOC, EXT_MALLOC);
+	program_loop(data, line);
 	rl_clear_history();
 	free_all(&data, NULL, -1);
 	return (0);

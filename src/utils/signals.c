@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:13:57 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:13:58 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:08:59 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+int		g_signal_pid;
 
 void	clear_rl_line(void)
 {

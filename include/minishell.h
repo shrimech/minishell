@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:09:07 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 23:39:19 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:01:59 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void				handle_sigint(int code);
 void				clear_rl_line(void);
 void				signals(t_data **data);
 void				signals2(void);
+void				handle_here_doc_sigint(int code);
 
 /* ---------- Utils ---------- */
 void				free_array(char **arr);
@@ -74,6 +75,7 @@ void				search_and_replace(char *str, char *value,
 						t_envirement **env, int pos);
 void				ft_delimitre(char *line);
 void				init_data(t_data *data, int argc, char **argv);
+char				*get_del(char *line);
 
 /* ---------- Debug ---------- */
 void				print_token(t_token *token);

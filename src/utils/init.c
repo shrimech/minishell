@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 23:16:11 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 23:16:42 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:00:12 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,22 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->pip[1] = -1;
 	g_signal_pid = 0;
 	signals(&data);
+}
+
+char	*get_del(char *line)
+{
+	char	*dest;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (line[i] && is_space(line[i]))
+		i++;
+	j = i;
+	while (line[j] && !is_space(line[j]))
+		j++;
+	dest = malloc(j - i + 1);
+	ft_strlcpy(dest, line + i, j - i + 1);
+	return (dest);
 }

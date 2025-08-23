@@ -6,29 +6,11 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 23:17:01 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 23:22:29 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:01:12 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-char	*get_del(char *line)
-{
-	char	*dest;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (line[i] && is_space(line[i]))
-		i++;
-	j = i;
-	while (line[j] && !is_space(line[j]))
-		j++;
-	dest = malloc(j - i + 1);
-	ft_strlcpy(dest, line + i, j - i + 1);
-	return (dest);
-}
 
 t_here	*global_her(t_here *status)
 {

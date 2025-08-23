@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 09:25:06 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 20:36:47 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 01:01:47 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ int						replace_dollar(char **line, t_data *data);
 t_here					*global_her(t_here *status);
 int						loop_here_doc(t_data *data);
 int						here_doc(t_data *data, char *word);
-void					handle_here_doc_sigint(int code);
 
 #endif

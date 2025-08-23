@@ -1,6 +1,5 @@
 #include "../../include/minishell.h"
 
-
 void	redirect_in_out(t_cmd *cmd, t_token *token)
 {
     t_token *current_token;
@@ -10,22 +9,19 @@ void	redirect_in_out(t_cmd *cmd, t_token *token)
     {
         
         if (current_token->type == HEREDOC && cmd->fd_her >= 0)
-        {
-            dup2(cmd->fd_her, 0);
-            close(cmd->fd_her);
-        }
+                dup2(cmd->fd_her, 0);
 	    if (current_token->type == RED_IN && cmd->infile >= 0)
-	    {
-	    	dup2(cmd->infile, 0);
-	    	close(cmd->infile);
-	    }
+	    	    dup2(cmd->infile, 0);
 	    if ((current_token->type == RED_OUT || current_token->type == APPEND) && cmd->outfile >= 0)
-	    {
-	    	dup2(cmd->outfile, 1);
-	    	close(cmd->outfile);
-	    }
+	            dup2(cmd->outfile, 1);
         current_token = current_token->next;
     }
+    if (cmd->fd_her >= 0)
+        close(cmd->fd_her);
+    if (cmd->infile >= 0)
+	    close(cmd->infile);
+    if (cmd->outfile >= 0)
+	    close(cmd->outfile);
 }
 
 void setupin(int prev)
