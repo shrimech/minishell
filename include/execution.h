@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaissam <slaissam@.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 09:26:22 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/22 20:32:22 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 04:15:20 by slaissam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,20 @@ bool					launch_builtin(t_data *data, t_cmd *cmd);
 char					*find_cmd(t_data *data, char *sample,
 							t_envirement *env);
 void					child_process(t_data *data, t_cmd *cmd, int *pip);
+
+/* ---------- Pipes ---------- */
 int						pipes(t_data *data);
+void					advance_token(t_token **token, t_data *data);
+int						count_cmds(t_cmd *cmd);
+void					controlfds(int *prev, int *fd, t_cmd *cmd,
+							t_data *data);
+void					wait_all(int *pid, int n, t_data *data);
+int						prev_set_up(int a);
 
 /* ---------- Commands ---------- */
 int						append_cmd(t_cmd **list, int infile, int outfile,
 							char **cmd_param);
 void					free_cmd(t_cmd **list);
-size_t					len_cmd(t_cmd *list);
 bool					create_list_cmd(t_data *data);
 bool					get_infile(t_data *data, t_token *token, t_cmd *cmd);
 bool					get_outfile(t_token *token, t_cmd *cmd, t_data *data);

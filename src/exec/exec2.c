@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: slaissam <slaissam@.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:11:42 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:11:43 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 04:26:09 by slaissam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static bool	check_dir(char **path, char *cmd, t_data *data)
 	stat(*path, &path_stat);
 	if (*cmd == '\0' || (*cmd == '.' && *(cmd + 1) == '.' && *(cmd + 2) != '/'))
 	{
-		// print_error(cmd);
 		ft_putstr_fd("blach : command not found\n", 2);
 		data->exit_code = 127;
 		return (false);
@@ -80,7 +79,6 @@ static void	redirect_in_out(t_data *data, t_cmd *cmd, int *pip)
 
 static void	built(int *pip, t_cmd *cmd, t_data *data)
 {
-	// printf("%d\n%d\n",pip[1],pip[0]);
 	close(pip[0]);
 	if (cmd->outfile < 0 && cmd->next != data->cmd)
 		cmd->outfile = pip[1];

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   launch_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: slaissam <slaissam@.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:12:04 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:12:05 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 02:29:06 by slaissam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/minishell.h"
 
@@ -43,7 +42,6 @@ bool	launch_builtin(t_data *data, t_cmd *cmd)
 	int	save_stdout;
 
 	save_stdout = -1;
-	// printf("%d\n",cmd->outfile);
 	if (cmd->outfile >= 0)
 	{
 		save_stdout = dup(1);
@@ -53,7 +51,7 @@ bool	launch_builtin(t_data *data, t_cmd *cmd)
 	if (cmd->outfile >= 0)
 	{
 		dup2(save_stdout, 1);
-		close (save_stdout);
+		close(save_stdout);
 	}
 	return (true);
 }

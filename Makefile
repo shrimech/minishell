@@ -1,7 +1,7 @@
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 LIBS = -lreadline ./libft/libft.a
 
 SRCS = ./src/main.c \
@@ -13,7 +13,7 @@ SRCS = ./src/main.c \
 	./src/builtin/ft_unset.c ./src/builtin/ft_pwd.c ./src/builtin/ft_env.c ./src/builtin/ft_export.c \
 	./src/builtin/ft_cd.c ./src/builtin/ft_echo.c ./src/builtin/ft_exit.c \
 	./src/exec/here_doc.c ./src/exec/exec.c ./src/exec/launch_builtin.c ./src/exec/find_cmd.c ./src/exec/exec2.c \
-	./src/exec/pipe.c
+	./src/exec/pipe.c ./src/utils/heredoc_utils2.c ./src/utils/pipe_utils.c ./src/utils/pipe_utils2.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: slaissam <slaissam@.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:28 by shrimech          #+#    #+#             */
-/*   Updated: 2025/08/16 13:15:55 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/08/23 03:59:43 by slaissam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,3 @@ void	free_cmd(t_cmd **list)
 	free(current);
 	*list = NULL;
 }
-
-// size_t	len_cmd(t_cmd *list)
-// {
-// 	t_cmd	*tmp;
-// 	size_t	i;
-
-// 	if ((list))
-// 	{
-// 		tmp = list;
-// 		i = 1;
-// 		while (tmp->next != list)
-// 		{
-// 			++i;
-// 			tmp = tmp->next;
-// 		}
-// 		return (i);
-// 	}
-// 	return (0);
-// }
